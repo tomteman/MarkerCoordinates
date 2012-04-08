@@ -24,15 +24,19 @@ JNIEXPORT void JNICALL Java_proxy_ConnectionManager_register(JNIEnv * env, jobje
 //	(*env)-> MonitorEnter(env,obj);
 	__android_log_print(ANDROID_LOG_INFO,"JNI2","Java_proxy_ConnectionManager_register");
       cls = (*env)->GetObjectClass(env, obj);
- //     cls = (*env)->NewGlobalRef(env,extractedCls);
+      //cls = (*env)->NewGlobalRef(env,extractedCls);
       __android_log_print(ANDROID_LOG_INFO,"JNI2","cls attained");
       (*env)->GetJavaVM(env, &g_jvm);
       __android_log_print(ANDROID_LOG_INFO,"JNI2","env attained");
       g_obj = obj;
+      g_obj = (*env)->NewGlobalRef(env, g_obj);
       __android_log_print(ANDROID_LOG_INFO,"JNI2","setting g_callback");
       g_callback = (*env)->GetMethodID(env, cls, "updatePawn", "(IFF)V");
+
       __android_log_print(ANDROID_LOG_INFO,"JNI2","g_callback set");
 //      (*env)-> MonitorExit(env,obj);
+      (*env)->CallVoidMethod(env, g_obj, g_callback, 1, 0.1, 0.2);
+                 __android_log_print(ANDROID_LOG_INFO,"JNI3","method called bla bla");
 }
 
 
