@@ -30,8 +30,8 @@ import edu.dhbw.andopenglcam.R;
 public class CustomActivity extends AndARActivity {
 	
 	private final int MENU_SCREENSHOT = 0;
-
 	CustomObject someObject;
+	
 	ARToolkit artoolkit;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -42,14 +42,27 @@ public class CustomActivity extends AndARActivity {
 		try {
 			artoolkit = super.getArtoolkit();
 			someObject = new CustomObject
-				("test", "patt.hiro", 80.0, new double[]{0,0});
+				("hiro", "patt.hiro", 80.0, new double[]{0,0});
 			artoolkit.registerARObject(someObject);
 			someObject = new CustomObject
-			("test", "android.patt", 80.0, new double[]{0,0});
+			("hiro", "patt.kanji", 80.0, new double[]{0,0});
+		artoolkit.registerARObject(someObject);
+//			someObject = new CustomObject
+//			("android", "android.patt", 80.0, new double[]{0,0});
+//			artoolkit.registerARObject(someObject);
+//			someObject = new CustomObject
+//			("star", "1.pat", 80.0, new double[]{0,0});
+//			artoolkit.registerARObject(someObject);
+//			CustomObject someObject3 = new CustomObject
+//			("arrow", "arrow.pat", 80.0, new double[]{0,0});
+//			artoolkit.registerARObject(someObject3);
+//			CustomObject someObject4 = new CustomObject
+//			("arrow2", "marker16.pat", 80.0, new double[]{0,0});
+//			artoolkit.registerARObject(someObject4);
+			
+			someObject = new CustomObject
+			("barcode", "barcode.patt", 80.0, new double[]{0,0});
 			artoolkit.registerARObject(someObject);
-			//someObject = new CustomObject
-			//("test", "barcode.patt", 80.0, new double[]{0,0});
-			//artoolkit.registerARObject(someObject);
 			
 		} catch (AndARException ex){
 			//handle the exception, that means: show the user what happened

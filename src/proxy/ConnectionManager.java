@@ -28,8 +28,9 @@ public class ConnectionManager {
     private void updatePawn(int id, float x, float y) {
     	try {
     	// Create a new HttpClient and Post Header
-    	HttpClient client = new DefaultHttpClient();  
-        HttpPost post = new HttpPost("http://192.168.0.100:8080/app/pawns/3");   
+    	HttpClient client = new DefaultHttpClient();
+    	String pawnId = Integer.toString(id+1);
+        HttpPost post = new HttpPost("http://192.168.0.100:8080/app/pawns/" + pawnId);   
         post.setHeader("Content-type", "application/x-www-form-urlencoded");
         post.setHeader("Accept", "*/*");
         

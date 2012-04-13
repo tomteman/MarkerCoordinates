@@ -20,8 +20,6 @@ C:/Users/Tom/workspace/andAR/AndAR//obj/local/armeabi-v7a/objs/ar/arDetectMarker
  C:/Users/Tom/workspace/external.libraries/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/malloc.h \
  C:/Users/Tom/workspace/andAR/AndAR//jni/AR/AR/config.h \
  C:/Users/Tom/workspace/andAR/AndAR//jni/AR/AR/param.h \
- C:/Users/Tom/workspace/andAR/AndAR//jni/AR/connection/ConnectionManager.h \
- C:/Users/Tom/workspace/external.libraries/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/jni.h \
  C:/Users/Tom/workspace/external.libraries/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/android/log.h
 
 C:/Users/Tom/workspace/external.libraries/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/stdio.h:
@@ -63,9 +61,5 @@ C:/Users/Tom/workspace/external.libraries/android-ndk-r7b/platforms/android-8/ar
 C:/Users/Tom/workspace/andAR/AndAR//jni/AR/AR/config.h:
 
 C:/Users/Tom/workspace/andAR/AndAR//jni/AR/AR/param.h:
-
-C:/Users/Tom/workspace/andAR/AndAR//jni/AR/connection/ConnectionManager.h:
-
-C:/Users/Tom/workspace/external.libraries/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/jni.h:
 
 C:/Users/Tom/workspace/external.libraries/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/android/log.h:

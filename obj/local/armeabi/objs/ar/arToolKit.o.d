@@ -25,6 +25,7 @@ C:/Users/Tom/workspace/andAR/AndAR//obj/local/armeabi/objs/ar/arToolKit.o: \
  C:/Users/Tom/workspace/andAR/AndAR//jni/AR/AR/param.h \
  C:/Users/Tom/workspace/andAR/AndAR//jni/AR/../marker_info.h \
  C:/Users/Tom/workspace/external.libraries/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/jni.h \
+ C:/Users/Tom/workspace/andAR/AndAR//jni/AR/connection/ConnectionManager.h \
  C:/Users/Tom/workspace/external.libraries/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/android/log.h \
  C:/Users/Tom/workspace/external.libraries/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/stdlib.h \
  C:/Users/Tom/workspace/external.libraries/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/string.h \
@@ -88,6 +89,8 @@ C:/Users/Tom/workspace/andAR/AndAR//jni/AR/AR/param.h:
 C:/Users/Tom/workspace/andAR/AndAR//jni/AR/../marker_info.h:
 
 C:/Users/Tom/workspace/external.libraries/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/jni.h:
+
+C:/Users/Tom/workspace/andAR/AndAR//jni/AR/connection/ConnectionManager.h:
 
 C:/Users/Tom/workspace/external.libraries/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/android/log.h:
 

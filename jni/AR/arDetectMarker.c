@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <AR/ar.h>
-#include <connection/ConnectionManager.h>
+
 #include <android/log.h>
 
 static ARMarkerInfo2          *marker_info2;
@@ -14,30 +14,10 @@ static arPrevInfo             sprev_info[2][AR_SQUARE_MAX];
 static int                    sprev_num[2] = {0,0};
 
 
-JavaVM *g_jvm = NULL;
-static jobject g_obj;
-static jmethodID g_callback;
-static jclass cls;
 
 
-JNIEXPORT void JNICALL Java_proxy_ConnectionManager_register(JNIEnv * env, jobject obj) {
-//	(*env)-> MonitorEnter(env,obj);
-	__android_log_print(ANDROID_LOG_INFO,"JNI2","Java_proxy_ConnectionManager_register");
-      cls = (*env)->GetObjectClass(env, obj);
-      //cls = (*env)->NewGlobalRef(env,extractedCls);
-      __android_log_print(ANDROID_LOG_INFO,"JNI2","cls attained");
-      (*env)->GetJavaVM(env, &g_jvm);
-      __android_log_print(ANDROID_LOG_INFO,"JNI2","env attained");
-      g_obj = obj;
-      g_obj = (*env)->NewGlobalRef(env, g_obj);
-      __android_log_print(ANDROID_LOG_INFO,"JNI2","setting g_callback");
-      g_callback = (*env)->GetMethodID(env, cls, "updatePawn", "(IFF)V");
 
-      __android_log_print(ANDROID_LOG_INFO,"JNI2","g_callback set");
-//      (*env)-> MonitorExit(env,obj);
-      (*env)->CallVoidMethod(env, g_obj, g_callback, 1, 0.1, 0.2);
-                 __android_log_print(ANDROID_LOG_INFO,"JNI3","method called bla bla");
-}
+
 
 
 int arSavePatt( ARUint8 *image, ARMarkerInfo *marker_info, char *filename )
@@ -185,47 +165,6 @@ int arDetectMarker( ARUint8 *dataPtr, int thresh,
 /*
 	printf("cf = %g\n", wmarker_info[i].cf);
 */
-#ifdef DEBUG_LOGGING
-    		int pawnId = i;
-    		float x = wmarker_info[i].pos[1]/320.0;
-    		float y = wmarker_info[i].pos[0]/480.0;
-           __android_log_print(ANDROID_LOG_INFO,"AR","cf[%d] = %g id[%d]=%d",i,wmarker_info[i].cf,i,wmarker_info[i].id);
-           __android_log_print(ANDROID_LOG_INFO,"TOM","============================================================");
-           __android_log_print(ANDROID_LOG_INFO,"TOM","wmarker_info[%d].POSITION: Y = %f; X = %f",i,wmarker_info[i].pos[0], wmarker_info[i].pos[1]);
-           __android_log_print(ANDROID_LOG_INFO,"TOM","wmarker_info[%d].RELATIVE_POSITION: Y = %f; X = %f",i,wmarker_info[i].pos[0]/480.0, wmarker_info[i].pos[1]/320.0);
-           __android_log_print(ANDROID_LOG_INFO,"TOM","wmarker_info[%d].vertex[0][0] = %f",i,wmarker_info[i].vertex[0][0]);
-           __android_log_print(ANDROID_LOG_INFO,"TOM","wmarker_info[%d].vertex[0][1] = %f",i,wmarker_info[i].vertex[0][1]);
-           __android_log_print(ANDROID_LOG_INFO,"TOM","wmarker_info[%d].vertex[1][0] = %f",i,wmarker_info[i].vertex[1][0]);
-           __android_log_print(ANDROID_LOG_INFO,"TOM","wmarker_info[%d].vertex[1][1] = %f",i,wmarker_info[i].vertex[1][1]);
-           __android_log_print(ANDROID_LOG_INFO,"TOM","wmarker_info[%d].vertex[2][0] = %f",i,wmarker_info[i].vertex[2][0]);
-           __android_log_print(ANDROID_LOG_INFO,"TOM","wmarker_info[%d].vertex[2][1] = %f",i,wmarker_info[i].vertex[2][1]);
-           __android_log_print(ANDROID_LOG_INFO,"TOM","wmarker_info[%d].vertex[3][0] = %f",i,wmarker_info[i].vertex[3][0]);
-           __android_log_print(ANDROID_LOG_INFO,"TOM","wmarker_info[%d].vertex[3][1] = %f",i,wmarker_info[i].vertex[3][1]);
-           jint jPawnId = (jint) pawnId;
-           jfloat jx = (jfloat) x;
-           jfloat jy = (jfloat) y;
-           if (g_jvm != NULL) {
-
-        	   __android_log_print(ANDROID_LOG_INFO,"JNI","JVM environment not null");
-               JNIEnv *env;
-               (*g_jvm)->GetEnv(g_jvm, (void**)&env, JNI_VERSION_1_4);
-   //            (*env)-> MonitorEnter(env,g_obj);
-
-               __android_log_print(ANDROID_LOG_INFO,"JNI","got environment");
-               __android_log_print(ANDROID_LOG_INFO,"JNI","environment == null: %s",(env == NULL)?"true":"false");
-               __android_log_print(ANDROID_LOG_INFO,"JNI","g_obj == null: %s",(g_obj == NULL)?"true":"false");
-               __android_log_print(ANDROID_LOG_INFO,"JNI","g_callback == null: %s",(g_callback == NULL)?"true":"false");
-               __android_log_print(ANDROID_LOG_INFO,"JNI","calling method");
-               __android_log_print(ANDROID_LOG_INFO,"JNI","pawnId = %d x = %f y = %f", pawnId, x, y);
-
-
-               (*env)->CallVoidMethod(env, g_obj, g_callback, jPawnId, jx, jy);
-
-               __android_log_print(ANDROID_LOG_INFO,"JNI","method called");
-               /* pawnId must be int, x, y must be float of course */
-//               (*env)-> MonitorExit(env,g_obj);
-           }
-#endif
         if( wmarker_info[i].cf < 0.5 ) { 
 #ifdef DEBUG_LOGGING
            __android_log_print(ANDROID_LOG_INFO,"AR","confidence value of marker %d too low(%f < 0.5)",i,wmarker_info[i].cf);
